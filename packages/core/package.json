@@ -1,0 +1,57 @@
+{
+  "name": "@unifom/core",
+  "type": "module",
+  "version": "0.0.0-development",
+  "packageManager": "pnpm@7.13.5",
+  "description": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xsfunc/unifom.git"
+  },
+  "keywords": [],
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./lib/cjs/types/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      },
+      "import": {
+        "types": "./lib/esm/types/index.d.ts",
+        "default": "./lib/esm/index.mjs"
+      }
+    }
+  },
+  "main": "./lib/cjs/index.js",
+  "types": "./lib/cjs/types/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "shx rm -rf ./lib",
+    "prebuild": "pnpm clean",
+    "build": "pnpm build:cjs && pnpm build:esm",
+    "build:cjs": "tsc -p ./tsconfig.cjs.json",
+    "build:esm": "tsc -p ./tsconfig.base.json",
+    "postbuild:esm": "shx mv lib/esm/index.js lib/esm/index.mjs",
+    "prepack": "pnpm build",
+    "semantic-release": "semantic-release"
+  },
+  "peerDependencies": {
+    "effector": "^22.3.0"
+  },
+  "devDependencies": {
+    "effector": "^22.3.0",
+    "semantic-release": "^19.0.5",
+    "shx": "^0.3.4"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

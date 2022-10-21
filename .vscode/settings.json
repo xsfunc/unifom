@@ -1,0 +1,12 @@
+{
+  "cSpell.words": [
+    "antfu",
+    "cacheable",
+    "unifom",
+    "vitepress"
+  ],
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+     "package.json": "nx.json, pnpm-lock.yaml, pnpm-workspace.yaml",
+  },
+}
