@@ -6,10 +6,17 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.27.0",
     "eslint": "^8.25.0",
+    "eslint-plugin-effector": "^0.10.3",
     "nx": "15.0.0",
     "typescript": "^4.8.4"
   },
   "eslintConfig": {
-    "extends": "@antfu"
+    "plugins": ["effector"],
+    "extends": [
+      "@antfu",
+      "plugin:effector/recommended",
+      "plugin:effector/future",
+      "plugin:effector/patronum"
+    ]
   }
 }

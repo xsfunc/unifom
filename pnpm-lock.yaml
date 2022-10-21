@@ -6,11 +6,13 @@ importers:
     specifiers:
       '@antfu/eslint-config': ^0.27.0
       eslint: ^8.25.0
+      eslint-plugin-effector: ^0.10.3
       nx: 15.0.0
       typescript: ^4.8.4
     devDependencies:
       '@antfu/eslint-config': 0.27.0_z4bbprzjrhnsfa24uvmcbu7f5q
       eslint: 8.25.0
+      eslint-plugin-effector: 0.10.3_xmbj7stjcruuoxyw6opbkmuj64
       nx: 15.0.0
       typescript: 4.8.4
 
@@ -1979,6 +1981,18 @@ packages:
       - typescript
     dev: true
 
+  /eslint-plugin-effector/0.10.3_xmbj7stjcruuoxyw6opbkmuj64:
+    resolution: {integrity: sha512-ELDEwYSERD4eHRWEthlQilNfIrYZwQ2poeGBfX05YVy1vIc9ZhIDa8jP7v9djnvRSSJ4gFu4qQQOoau7O33kaw==}
+    engines: {node: ^14 || ^15 || ^16 || ^17 || ^18}
+    peerDependencies:
+      effector: '*'
+      eslint: 7 || 8
+    dependencies:
+      effector: 22.3.0
+      eslint: 8.25.0
+      prettier: 2.7.1
+    dev: true
+
   /eslint-plugin-es/4.1.0_eslint@8.25.0:
     resolution: {integrity: sha512-GILhQTnjYE2WorX5Jyi5i4dz5ALWxBIdQECVQavL6s7cI76IZTDWleTHkxz/QT3kvcs2QlGHvKLYsSlPOlPXnQ==}
     engines: {node: '>=8.10.0'}
@@ -3786,6 +3800,12 @@ packages:
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier/2.7.1:
+    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /process-nextick-args/2.0.1:
