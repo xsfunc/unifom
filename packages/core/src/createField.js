@@ -1,4 +1,11 @@
-import { attach, createEffect, createEvent, createStore, is, sample } from 'effector'
+import {
+  attach,
+  createEffect,
+  createEvent,
+  createStore,
+  is,
+  sample,
+} from 'effector'
 
 export function createField({
   name = null,
@@ -112,4 +119,3 @@ export function createField({
 function not(store) {
   return store.map(state => !state)
 }
-
