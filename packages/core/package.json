@@ -37,7 +37,7 @@
     "postbuild:esm": "shx mv lib/esm/index.js lib/esm/index.mjs",
     "prepack": "pnpm build",
     "semantic-release": "semantic-release",
-    "lint": "eslint --ext .js,.ts"
+    "lint": "eslint"
   },
   "peerDependencies": {
     "effector": "^22.3.0"
