@@ -2,7 +2,9 @@
   "name": "unifom",
   "private": true,
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "lint": "nx run-many --target=lint"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^0.27.0",
     "eslint": "^8.25.0",
@@ -11,7 +13,11 @@
     "typescript": "^4.8.4"
   },
   "eslintConfig": {
-    "plugins": ["effector"],
+    "root": true,
+    "ignorePatterns": ["node_modules, lib"],
+    "plugins": [
+      "effector"
+    ],
     "extends": [
       "@antfu",
       "plugin:effector/recommended",
