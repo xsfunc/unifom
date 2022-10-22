@@ -16,5 +16,13 @@
         "cacheableOperations": ["build", "lint", "test"]
       }
     }
+  },
+
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*",
+      "eslintConfig": "*"
+    }
   }
 }
