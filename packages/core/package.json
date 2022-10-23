@@ -28,7 +28,7 @@
     "lib/**/*"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "clean": "shx rm -rf ./lib",
     "prebuild": "pnpm clean",
     "build": "pnpm build:cjs && pnpm build:esm",
@@ -54,5 +54,13 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "babel": {
+    "plugins": [
+      [
+        "effector/babel-plugin",
+        { "factories": ["src/createField"] }
+      ]
+    ]
   }
 }
