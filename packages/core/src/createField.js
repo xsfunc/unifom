@@ -7,17 +7,20 @@ import {
   sample,
 } from 'effector'
 
-export function createField({
-  name = null,
-  initialValue,
-  validate = () => [],
-  validateOn = 'blur',
-  isSubmitting,
-  onReset,
-}) {
+export function createField(options = {}) {
+  const {
+    name = null,
+    initialValue = '',
+    validate = () => [],
+    validateOn = 'blur',
+    isSubmitting = false,
+    onReset,
+  } = options
+
   const interacted = createEvent()
   const submitted = createEvent()
   const submissionValidated = createEvent()
+  const validateOnSet = createEvent()
   const reset = is.event(onReset) ? onReset : createEvent()
   const focused = interacted.prepend(() => ({ focus: true, type: 'focus' }))
   const blurred = interacted.prepend(() => ({ focus: false, type: 'blur' }))
@@ -27,12 +30,13 @@ export function createField({
   const $name = createStore(name)
   const $errors = createStore([])
   const $focused = createStore(false)
-  const $isDirty = createStore(false)
   const $touched = createStore(false)
-  const $error = $errors.map(errors => errors[0])
+  const $isDirty = $value.map(value => value !== initialValue)
+  const $error = $errors.map(errors => errors[0] || null)
   const $isValid = $errors.map(errors => errors.length === 0)
   const $hasError = $isValid.map(isValid => !isValid)
-  const $validationType = createStore(validateOn)
+  const $isSubmitting = is.store(isSubmitting) ? isSubmitting : createStore(isSubmitting)
+  const $validationOn = createStore(validateOn)
 
   const validateSourceFx = createEffect(validate)
   const validateFx = attach({ effect: validateSourceFx, source: $value })
@@ -49,20 +53,18 @@ export function createField({
     target: $focused,
   })
   sample({
-    clock: $value,
-    filter: not($isDirty),
-    fn: () => true,
-    target: $isDirty,
-  })
-  sample({
     clock: $focused,
     filter: not($touched),
     fn: () => true,
     target: $touched,
   })
   sample({
+    clock: validateOnSet,
+    target: $validationOn,
+  })
+  sample({
     clock: interacted,
-    source: $validationType,
+    source: $validationOn,
     filter: (validationType, { type }) => type === validationType,
     target: validateFx,
   })
@@ -86,7 +88,6 @@ export function createField({
   $value.reset(reset)
   $errors.reset(reset)
   $focused.reset(reset)
-  $isDirty.reset(reset)
   $touched.reset(reset)
 
   return {
@@ -99,7 +100,8 @@ export function createField({
     $isValid,
     $isDirty,
     $hasError,
-    $isSubmitting: isSubmitting,
+    $isSubmitting,
+    $validationOn,
     $isValidating: validateSourceFx.pending,
 
     // input events
@@ -107,15 +109,17 @@ export function createField({
     focus: focused,
     blur: blurred,
     submit: submitted,
-    reset,
-    // sugar
     setValue: changed.prepend(value => ({ value })),
+    setValidateOn: validateOnSet,
 
     // output events
     submitted: submissionValidated,
+    validated: validateFx.done,
+    reset,
   }
 }
 
 function not(store) {
   return store.map(state => !state)
 }
+
