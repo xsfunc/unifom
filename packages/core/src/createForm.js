@@ -41,6 +41,7 @@ export function createForm({
     fields,
     values,
     errors,
+    reset,
 
     // output
     submitted: submissionValidated,
