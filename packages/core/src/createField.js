@@ -116,10 +116,28 @@ export function createField(options = {}) {
     submitted: submissionValidated,
     validated: validateFx.done,
     reset,
+
+    '@@unitShape': () => ({
+      name: $name,
+      value: $value,
+      error: $error,
+      errors: $errors,
+      touched: $touched,
+      focused: $focused,
+      isValid: $isValid,
+      isDirty: $isDirty,
+      hasError: $hasError,
+      isSubmitting: $isSubmitting,
+      isValidating: $isValidating,
+      change: changed,
+      focus: focused,
+      blur: blurred,
+      submit: submitted,
+      setValue: changed.prepend(value => ({ value })),
+      setValidateOn: validateOnSet,
+    }),
   }
-}
 
-function not(store) {
-  return store.map(state => !state)
-}
-
+  function not(store) {
+    return store.map(state => !state)
+  }

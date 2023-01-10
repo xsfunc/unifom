@@ -36,14 +36,19 @@ export function createForm({
   })
 
   return {
-    submit: submitted,
     isSubmitting,
     fields,
     values,
     errors,
     reset,
-
-    // output
-    submitted: submissionValidated,
+    'submit': submitted,
+    'submitted': submissionValidated,
+    '@@unitShape': () => ({
+      submit: submitted,
+      isSubmitting,
+      values,
+      errors,
+      fields: fields.map(f => f.['@@unitShape']()),
+    }),
   }
 }
