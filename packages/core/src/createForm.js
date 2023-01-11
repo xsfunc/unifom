@@ -48,7 +48,7 @@ export function createForm({
       isSubmitting,
       values,
       errors,
-      fields: fields.map(f => f.['@@unitShape']()),
+      fields: fields.map(f => f['@@unitShape']()),
     }),
   }
 }
