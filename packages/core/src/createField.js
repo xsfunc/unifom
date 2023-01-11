@@ -128,7 +128,7 @@ export function createField(options = {}) {
       isDirty: $isDirty,
       hasError: $hasError,
       isSubmitting: $isSubmitting,
-      isValidating: $isValidating,
+      isValidating: validateSourceFx.pending,
       change: changed,
       focus: focused,
       blur: blurred,
