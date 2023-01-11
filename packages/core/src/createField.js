@@ -102,19 +102,19 @@ export function createField(options = {}) {
     $hasError,
     $isSubmitting,
     $validationOn,
-    $isValidating: validateSourceFx.pending,
+    '$isValidating': validateSourceFx.pending,
 
     // input events
-    change: changed,
-    focus: focused,
-    blur: blurred,
-    submit: submitted,
-    setValue: changed.prepend(value => ({ value })),
-    setValidateOn: validateOnSet,
+    'change': changed,
+    'focus': focused,
+    'blur': blurred,
+    'submit': submitted,
+    'setValue': changed.prepend(value => ({ value })),
+    'setValidateOn': validateOnSet,
 
     // output events
-    submitted: submissionValidated,
-    validated: validateFx.done,
+    'submitted': submissionValidated,
+    'validated': validateFx.done,
     reset,
 
     '@@unitShape': () => ({
@@ -137,7 +137,8 @@ export function createField(options = {}) {
       setValidateOn: validateOnSet,
     }),
   }
+}
 
-  function not(store) {
-    return store.map(state => !state)
-  }
+function not(store) {
+  return store.map(state => !state)
+}
