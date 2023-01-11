@@ -48,7 +48,6 @@ export function createForm({
       isSubmitting,
       values,
       errors,
-      fields,
     }),
   }
 }
