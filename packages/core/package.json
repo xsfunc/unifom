@@ -1,7 +1,7 @@
 {
   "name": "@unifom/core",
   "type": "module",
-  "version": "0.0.6-development",
+  "version": "0.0.7-development",
   "packageManager": "pnpm@7.13.5",
   "description": "",
   "license": "MIT",
@@ -40,11 +40,10 @@
     "lint": "eslint ."
   },
   "peerDependencies": {
-    "effector": "^22.3.0"
+    "effector": "^22.5.0"
   },
   "devDependencies": {
-    "effector": "^22.3.0",
-    "semantic-release": "^19.0.5",
+    "semantic-release": "^20.0.2",
     "shx": "^0.3.4"
   },
   "release": {
@@ -59,7 +58,11 @@
     "plugins": [
       [
         "effector/babel-plugin",
-        { "factories": ["src/createField"] }
+        {
+          "factories": [
+            "src/createField"
+          ]
+        }
       ]
     ]
   }

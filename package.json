@@ -10,12 +10,12 @@
     "@babel/cli": "^7.20.7",
     "@babel/core": "^7.20.12",
     "@rollup/plugin-babel": "^6.0.3",
-    "eslint": "^8.31.0",
+    "eslint": "^8.32.0",
     "eslint-plugin-effector": "^0.10.3",
-    "nx": "15.4.5",
+    "nx": "15.5.3",
     "patronum": "^1.14.1",
     "typescript": "^4.9.4",
-    "vitest": "^0.27.0"
+    "vitest": "^0.27.3"
   },
   "eslintConfig": {
     "root": true,
