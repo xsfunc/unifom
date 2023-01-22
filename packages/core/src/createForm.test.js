@@ -11,6 +11,10 @@ describe('Given form', () => {
     },
   })
 
+  test('@@unitShape protocol returns same object for every call', async () => {
+    expect(form['@@unitShape']()).toBeDefined()
+  })
+
   test('When fill first and last names', async () => {
     const { firstName, lastName } = form.fields
     allSettled(firstName.setValue, { params: 'Alan', scope })

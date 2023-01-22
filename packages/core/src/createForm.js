@@ -48,6 +48,15 @@ export function createForm({
       isSubmitting,
       values,
       errors,
+      fields: fieldsUnitShape(fields),
     }),
   }
+}
+
+function fieldsUnitShape(fields) {
+  const fieldsEntries = Object.entries(fields).map(([name, value]) =>
+    [name, value['@@unitShape']()],
+  )
+
+  return Object.fromEntries(fieldsEntries)
 }
