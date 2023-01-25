@@ -46,8 +46,6 @@ export function createForm({
     '@@unitShape': () => ({
       submit: submitted,
       isSubmitting,
-      values,
-      errors,
     }),
   }
 }
