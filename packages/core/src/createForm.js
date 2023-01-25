@@ -54,7 +54,7 @@ export function createForm({
 
 function fieldsUnitShape(fields) {
   const fieldsEntries = Object.entries(fields)
-    .map(([name, value]) = [name, value['@@unitShape']()])
+    .map(([name, value]) => [name, value['@@unitShape']()])
 
   return Object.fromEntries(fieldsEntries)
 }
